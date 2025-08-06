@@ -1,0 +1,9 @@
+{
+	"name": "priyankaproject",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "75d6e7c2-b017-4deb-b6d6-68760a575147",
+		"tenantId": "b085e5e6-ea93-4ffa-8e9a-fa9dcb1d0ea2"
+	}
+}

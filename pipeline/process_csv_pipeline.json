@@ -1,0 +1,60 @@
+{
+	"name": "process_csv_pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "process_csv",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/hazelriver010@gmail.com/process_csv",
+					"baseParameters": {
+						"bronzepath": {
+							"value": "@variables('bronzepath')",
+							"type": "Expression"
+						},
+						"archivepath": {
+							"value": "@variables('archivepath')",
+							"type": "Expression"
+						},
+						"filename": {
+							"value": "@pipeline().parameters.filepath",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "db_nb",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"filepath": {
+				"type": "string",
+				"defaultValue": "raw_sales_data.csv"
+			}
+		},
+		"variables": {
+			"bronzepath": {
+				"type": "String",
+				"defaultValue": "abfss://priyankaproject@priyasanew1.dfs.core.windows.net/bronze"
+			},
+			"archivepath": {
+				"type": "String",
+				"defaultValue": "abfss://priyankaproject@priyasanew1.dfs.core.windows.net/archive"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-07-31T07:40:18Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
